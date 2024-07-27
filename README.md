@@ -1,24 +1,14 @@
-my_project/
+portalHrd/
 │
-├── my_project/
+├── portalHrd/  # Folder ini berisi pengaturan proyek dan file utama Django
 │   ├── __init__.py
 │   ├── settings.py
 │   ├── urls.py
 │   ├── asgi.py
 │   └── wsgi.py
 │
-├── apps/
-│   ├── common/  # Aplikasi umum untuk shared utilities, mixins, etc.
-│   │   ├── __init__.py
-│   │   ├── models.py
-│   │   ├── utils.py
-│   │   ├── mixins.py
-│   │   ├── views.py
-│   │   ├── urls.py
-│   │   └── templates/
-│   │       └── common/
-│   │
-│   ├── core/  # Aplikasi utama untuk halaman dasar seperti home, about, contact
+├── apps/  # Folder ini berisi aplikasi-aplikasi Django dalam proyek ini
+│   ├── main/  # Aplikasi untuk halaman utama (beranda, tim kami, prosedur, aturan, kontak)
 │   │   ├── __init__.py
 │   │   ├── admin.py
 │   │   ├── apps.py
@@ -28,40 +18,48 @@ my_project/
 │   │   ├── forms.py
 │   │   ├── tests.py
 │   │   └── templates/
-│   │       └── core/
-│   │           └── home.html
-│   │           └── contact.html
-│   │           └── about.html
+│   │       └── main/
+│   │           ├── beranda.html
+│   │           ├── team_kami.html
+│   │           ├── prosedur.html
+│   │           ├── aturan.html
+│   │           └── kontak.html
 │   │
-│   ├── team/  # Aplikasi khusus untuk informasi tim
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── models.py
-│   │   ├── views.py
-│   │   ├── urls.py
-│   │   ├── forms.py
-│   │   ├── tests.py
-│   │   └── templates/
-│   │       └── team/
-│   │           └── team.html
-│   │           └── member_detail.html
+│   ├── forms/  # Aplikasi untuk mengelola berbagai form permintaan
+│   │   ├── permintaan_training/
+│   │   │   ├── __init__.py
+│   │   │   ├── views.py
+│   │   │   ├── models.py
+│   │   │   ├── forms.py
+│   │   │   ├── urls.py
+│   │   │   ├── templates/
+│   │   │   │   └── permintaan_training/
+│   │   │   │       ├── permintaan_training_form.html
+│   │   │   │       └── permintaan_training_approval.html
+│   │   │
+│   │   ├── dinas_luar/
+│   │   │   ├── __init__.py
+│   │   │   ├── views.py
+│   │   │   ├── models.py
+│   │   │   ├── forms.py
+│   │   │   ├── urls.py
+│   │   │   ├── templates/
+│   │   │   │   └── dinas_luar/
+│   │   │   │       ├── dinas_luar_form.html
+│   │   │   │       └── dinas_luar_approval.html
+│   │   │
+│   │   ├── sumbangan/
+│   │   │   ├── __init__.py
+│   │   │   ├── views.py
+│   │   │   ├── models.py
+│   │   │   ├── forms.py
+│   │   │   ├── urls.py
+│   │   │   ├── templates/
+│   │   │   │   └── sumbangan/
+│   │   │   │       ├── sumbangan_form.html
+│   │   │   │       └── sumbangan_approval.html
 │   │
-│   ├── events/  # Aplikasi untuk mengelola acara
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── models.py
-│   │   ├── views.py
-│   │   ├── urls.py
-│   │   ├── forms.py
-│   │   ├── tests.py
-│   │   └── templates/
-│   │       └── events/
-│   │           └── event_list.html
-│   │           └── event_detail.html
-│   │
-│   ├── information/  # Aplikasi untuk informasi khusus (bus, attendance, menu)
+│   ├── information/  # Aplikasi untuk halaman informasi
 │   │   ├── __init__.py
 │   │   ├── admin.py
 │   │   ├── apps.py
@@ -72,40 +70,17 @@ my_project/
 │   │   ├── tests.py
 │   │   └── templates/
 │   │       └── information/
-│   │           └── bus.html
-│   │           └── attendance.html
-│   │           └── menu.html
-│   │
-│   ├── forms/  # Aplikasi utama untuk semua form
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── models.py
-│   │   ├── views.py
-│   │   ├── urls.py
-│   │   ├── forms.py
-│   │   ├── tests.py
-│   │   ├── templates/
-│   │   │   └── forms/
-│   │   │       └── request_training.html
-│   │   │       └── leave_request.html
-│   │   │       └── salary_complaint.html
-│   │   └── approvals/
-│   │       ├── __init__.py
-│   │       ├── views.py
-│   │       ├── urls.py
-│   │       ├── templates/
-│   │       │   └── approvals/
-│   │       │       └── request_training_approval.html
-│   │       │       └── leave_request_approval.html
-│   │       │       └── salary_complaint_approval.html
-│   │       └── static/
-│   │           └── approvals/
+│   │           ├── pengumuman.html
+│   │           ├── informasi_kehadiran.html
+│   │           ├── jadwal_training.html
+│   │           ├── jadwal_bus.html
+│   │           └── menu_kantin.html
 │
-├── manage.py
-├── static/
+├── manage.py  # File ini digunakan untuk berbagai perintah manajemen proyek Django
+│
+├── static/  # Folder ini berisi file-file statis seperti CSS, JS, gambar
 │   ├── css/
 │   ├── js/
 │   └── images/
 │
-└── media/
+└── media/  # Folder ini untuk file yang diunggah pengguna, seperti foto atau dokumen
